@@ -1,6 +1,7 @@
 import './App.css';
 import Recipe from './Recipe';
 import React,{useEffect, useState} from 'react';
+import logos from './logo.png';
 
 const App = () => {
 
@@ -39,16 +40,22 @@ const App = () => {
 
   return(
     <div className="App">
-     <form onSubmit={getSearch} action="" className="search-form">
+    <div className="formin">
+    <img className="logo" src={logos}/>
+    <h4 className="title">Type down the recipe you want to find</h4>
+    <form onSubmit={getSearch} action="" className="search-form">
        <input placeholder="Search Recipes. ex: Pasta" type="text" className="search-bar" value={search} onChange={updateSearch}/>
        <button type="submit" className="search-button" >
          Search</button>
        </form> 
+    </div>
+    
        <div className="recipes">
+        
        {recipes.map(recipe =>(
             <Recipe
              key={recipe.recipe.calories}
-            title={recipe.recipe.label} 
+             title={recipe.recipe.label} 
              calories={recipe.recipe.calories} 
              image = {recipe.recipe.image}
              ingredients={recipe.recipe.ingredients}
