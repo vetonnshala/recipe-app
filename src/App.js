@@ -1,7 +1,7 @@
 import './App.css';
 import Recipe from './Recipe';
 import React,{useEffect, useState} from 'react';
-import logos from './logo.png';
+
 
 const App = () => {
 
@@ -10,12 +10,13 @@ const App = () => {
  
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
-  const [query, setQuery] = useState(`chicken`)
+  const [query, setQuery] = useState(``)
 
 
   useEffect( () => {
     getRecipes();
     
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[query]);
   
 
@@ -41,7 +42,7 @@ const App = () => {
   return(
     <div className="App">
     <div className="formin">
-    <img className="logo" src={logos}/>
+    <h1 className="logo">RECIPE</h1>
     <h4 className="title">Type down the recipe you want to find</h4>
     <form onSubmit={getSearch} action="" className="search-form">
        <input placeholder="Search Recipes. ex: Pasta" type="text" className="search-bar" value={search} onChange={updateSearch}/>
@@ -51,7 +52,6 @@ const App = () => {
     </div>
     
        <div className="recipes">
-        
        {recipes.map(recipe =>(
             <Recipe
              key={recipe.recipe.calories}
